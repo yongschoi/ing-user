@@ -51,7 +51,7 @@ logging:
 spring:
   config:
     activate:
-      on-profile: kube
+      on-profile: container
   application:
     name: ing-user
   datasource:
