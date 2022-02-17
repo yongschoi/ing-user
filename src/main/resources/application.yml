@@ -44,8 +44,6 @@ minio:
 ---
 server:
   port: 8080
-  servlet:
-    context-path: /user
     
 logging:
   level:
