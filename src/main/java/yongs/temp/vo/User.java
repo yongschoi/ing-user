@@ -12,6 +12,5 @@ public class User {
 	private String email;
 	private String name;
 	private int score;
-	private String photo;
 	private String photoUrl;
 }

@@ -4,8 +4,6 @@ spring:
 ---
 server:
   port: 8081
-  servlet:
-    context-path: /user
 
 logging:
   level:
@@ -40,12 +38,20 @@ mybatis:
 minio: 
   host: minio
   port: 9000
-  
+
+pagehelper: # https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/en/HowToUse.md
+  helper-dialect: mariadb   
+  page-size-zero: false  
+  offset-as-page-num: false  
+  row-bounds-with-count: false  
+  auto-runtime-dialect: false  
+  close-conn: true  
+  default-count: true
+  reasonable: true # 범위가 넘어가는 pageNum이 들어올때 가능한 값으로 변경
+    
 ---
 server:
   port: 8080
-  servlet:
-    context-path: /user
         
 logging:
   level:
@@ -76,7 +82,18 @@ mybatis:
     default-fetch-size: 500
   mapper-locations:
   - classpath:mybatis/mapper/*.xml
-   
+    
 minio: 
   host: minio
   port: 9000
+  
+pagehelper: # https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/en/HowToUse.md
+  helper-dialect: mariadb   
+  page-size-zero: false  
+  offset-as-page-num: false  
+  row-bounds-with-count: false  
+  auto-runtime-dialect: false  
+  close-conn: true  
+  default-count: true
+  reasonable: true # 범위가 넘어가는 pageNum이 들어올때 가능한 값으로 변경
+ 

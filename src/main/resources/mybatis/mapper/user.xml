@@ -2,9 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="yongs.temp.db.UserMapper">
     <select id="findAll" resultType="yongs.temp.vo.User">
-        SELECT id, email, name, score, photo FROM `user`
+        SELECT id, email, name, score FROM `user`
+    </select>
+    <select id="findAllNoOffset" parameterType="int" resultType="yongs.temp.vo.User">
+    	<![CDATA[ 
+        	SELECT id, email, name, score FROM `user` WHERE id > #{lastId} LIMIT #{pageSize}  
+        ]]>
     </select>
     <select id="findByEmail" parameterType="String" resultType="yongs.temp.vo.User">
-        SELECT id, email, name, score, photo FROM `user` WHERE email = #{email} 
+        SELECT id, email, name, score FROM `user` WHERE email = #{email} 
     </select>
+    <select id="findById" parameterType="String" resultType="yongs.temp.vo.User">
+        SELECT id, email, name, score FROM `user` WHERE id = #{id} 
+    </select>
+    <insert id="insert" parameterType="yongs.temp.vo.User"> 
+        INSERT INTO `user` (email, name, score) VALUES (#{email}, #{name}, #{score}) 
+    </insert>
+    <update id="update" parameterType="yongs.temp.vo.User"> 
+    	UPDATE `user` 
+    	   SET email = #{email}, name = #{name}, score = #{score} 
+    	 WHERE id = #{id}
+    </update> 
 </mapper>
