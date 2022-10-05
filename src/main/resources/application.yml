@@ -65,7 +65,7 @@ spring:
   application:
     name: ing-user
   datasource:
-    url: jdbc:mariadb://maria:3306/example
+    url: ${MARIADB_URL}
     driverClassName: org.mariadb.jdbc.Driver
     username: scott
     password: tiger
