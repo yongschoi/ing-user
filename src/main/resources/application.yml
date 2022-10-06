@@ -66,13 +66,17 @@ spring:
     name: ing-user
   datasource:
     url: ${MARIADB_URL}
-    driverClassName: org.mariadb.jdbc.Driver
-    username: scott
-    password: tiger
+    driverClassName: ${MARIADB_DRIVER}
+    username: ${MARIADB_USER}
+    password: ${MARIADB_PASSWORD}
     hikari:
       connection-timeout: 10000
       maximum-pool-size: 5
 
+minio: 
+  host: ${MINIO_HOST}
+  port: ${MINIO_PORT}
+  
 mybatis:
   configuration:
     multiple-result-sets-enabled: false
@@ -82,10 +86,6 @@ mybatis:
     default-fetch-size: 500
   mapper-locations:
   - classpath:mybatis/mapper/*.xml
-    
-minio: 
-  host: minio
-  port: 9000
   
 pagehelper: # https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/en/HowToUse.md
   helper-dialect: mariadb   
